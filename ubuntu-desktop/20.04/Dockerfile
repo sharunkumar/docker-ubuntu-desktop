@@ -1,8 +1,7 @@
 ARG BASE_IMAGE=ubuntu:20.04
-From $BASE_IMAGE
+FROM $BASE_IMAGE
 
 LABEL maintainer "zhengpeng ge"
-MAINTAINER zhenpeng ge "https://github.com/gezp"
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV USER=ubuntu \
