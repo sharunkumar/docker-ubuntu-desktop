@@ -7,11 +7,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV USER=ubuntu \
     PASSWORD=ubuntu \
     UID=1000 \
-    GID=1000 \
-    TZ=Asia/Shanghai \
-    LANG=zh_CN.UTF-8 \
-    LC_ALL=zh_CN.UTF-8 \
-    LANGUAGE=zh_CN.UTF-8
+    GID=1000
 
 ENV NVIDIA_VISIBLE_DEVICES=all
 ENV NVIDIA_DRIVER_CAPABILITIES=all
@@ -38,7 +34,6 @@ RUN apt-get update  && \
                     openssh-server bash-completion software-properties-common python3-pip python3-numpy  && \
     update-alternatives --install /usr/bin/python python /usr/bin/python3 2 && \
     pip3 install --upgrade pip &&\
-    locale-gen zh_CN.UTF-8 &&\
     rm -rf /var/lib/apt/lists/* 
 
 ## Install desktop and chrome
@@ -70,6 +65,6 @@ RUN mkdir /var/run/sshd &&  \
 ## Copy config
 COPY docker_config /docker_config
 
-EXPOSE 22 4000
+EXPOSE 22 4000 5901
 
 ENTRYPOINT ["/docker_config/startup.sh"]
